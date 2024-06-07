@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./iconfont.css">
+    <link rel="stylesheet" href="./index3.css">
+    <script src="./vue.global.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <div class="headlebox " v-show="navShow" @mouseover="handleMouseover" @mouseleave="handleMouseleave">
+            <div class="div0" v-if="isShow==true">
+                <div class="div0-1">
+                    <i class="iconfont" @click="handleShow2">&#xe839;</i>
+                    <div class="div0-2">
+                        <i class="iconfont">&#xe840;</i>
+                        <input type="text" placeholder="搜索">
+                    </div>
+                </div>
+            </div>
+            <div v-else>
+                <div class="div1">
+                    <div class="div1-1" @click="handleShow">
+                        <i class="iconfont">&#xe840;</i>
+                        <div class="div-1-1-2">搜索</div>
+                    </div>
+                    <div class="div1-2">
+                        <img src="/huasheng/01/img/横版 华盛_画板 1-黑.png" alt="">
+                    </div>
+                    <div class="div1-3">
+                        <div>
+                            <i class="iconfont">&#xe828;</i>
+                            <div>账号登录</div>
+                        </div>
+                        <div>
+                            <i class="iconfont">&#xe83b;</i>
+                            <div>愿望清单</div>
+                        </div>
+                        <div>
+                            <i class="iconfont">&#xe826;</i>
+                        </div>
+                        <div>
+                            English
+                        </div>
+                    </div>
+                </div>
+                <div class="div2">
+                    <div class="div21">
+                        <div class="div21-1" @click="gotoSY('/huasheng/01/index.html')"><span>首页</span></div>
+                        <div class="div21-1"><span class="span-2">产品中心</span></div>
+                        <div class="div21-1"><span>2D模拟空间</span></div>
+                        <div class="div21-1"><span>潮流趋势</span></div>
+                        <div class="div21-1"><span>关于我们</span></div>
+                        <div class="div21-1"><span>联系我们</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="div3">
+            <div class="div3-1">
+                <div class="div3-1-1">
+                    <div class="div3-1-1-1">热门</div>
+                </div>
+                <div class="div3-1-2">
+                    <span class="div3-1-2-1">
+                        爆款
+                    </span>
+                    <span class="div3-1-2-1">
+                        新品
+                    </span>
+                    <span class="div3-1-2-1">
+                        定制
+                    </span>
+                </div>
+            </div>
+            <div class="div3-1">
+                <div class="div3-1-1">
+                    <div class="div3-1-1-1">用途</div>
+                </div>
+                <div class="div3-1-2">
+                    <span class="div3-1-2-1">
+                        爆款
+                    </span>
+                    <span class="div3-1-2-1">
+                        新品
+                    </span>
+                    <span class="div3-1-2-1">
+                        定制
+                    </span>
+                    <span class="div3-1-2-1">
+                        定制
+                    </span>
+                </div>
+            </div>
+            <div class="div3-1">
+                <div class="div3-1-1">
+                    <div class="div3-1-1-1">更多</div>
+                </div>
+                <div class="div3-1-2">
+                    <select id="" class="div-3-1-2-1">
+                        <option value="1">1111</option>
+                        <option value="2">1111</option>
+                        <option value="3">1111</option>
+                    </select>
+                    <select id="" class="div-3-1-2-1">
+                        <option value="1">1111</option>
+                        <option value="2">1111</option>
+                        <option value="3">1111</option>
+                    </select>
+                    <select id="" class="div-3-1-2-1">
+                        <option value="1">1111</option>
+                        <option value="2">1111</option>
+                        <option value="3">1111</option>
+                    </select>
+                    <div class="div-3-1-2-2">
+                        <i class="iconfont">&#xe840;</i>
+                        <input type="text" placeholder="按潘通号搜索">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="div4">
+            <div class="div4-1" >
+                <i class="iconfont">&#xe840;</i>
+                <input class="input-1" type="text" placeholder="搜索">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var obj = {
+            data() {
+                return {
+                    top: "",
+                    isShow: false,
+                    navShow: true,
+
+
+                }
+            },
+            mounted() {
+                window.addEventListener("scroll", () => {
+                    this.top = document.documentElement.scrollTop || document.body.scrollTo
+                })
+            },
+            watch: {
+                top(newValue, oldValue) {
+                    if (newValue > 100) {
+                        if (newValue > oldValue) {
+                            this.navShow = false
+                            console.log(newValue, oldValue, "下");
+                        }
+                        else {
+                            this.navShow = true
+                            console.log(newValue, oldValue, "上");
+                        }
+                    }
+                }
+            },
+            methods: {
+                handleShow() {
+                    this.isShow = true
+                },
+                handleShow2() {
+                    this.isShow = false
+                },
+                handleMouseover() {
+                    this.imgnum = 1
+                },
+                handleMouseleave() {
+                    this.imgnum = 0
+                },
+                gotoSY(path){
+                    window.location.href=path
+                }
+
+            }
+        }
+
+        var app = Vue.createApp(obj).mount("#box")
+    </script>
+</body>
+
+</html>
